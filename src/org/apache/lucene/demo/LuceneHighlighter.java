@@ -18,7 +18,7 @@ public class LuceneHighlighter{
     public static String highlight(String pText, String pQuery) throws Exception{	
     	
     	
-    	SimpleHTMLFormatter htmlFormatter = new SimpleHTMLFormatter("<span style='background-color: #ffffcc'>", "</span>");
+    	SimpleHTMLFormatter htmlFormatter = new SimpleHTMLFormatter("<span style='background-color: yellow'>", "</span>");
     	Analyzer analyzer = new StandardAnalyzer();
     	QueryParser parser = new QueryParser("contents", analyzer);
 	
@@ -45,6 +45,9 @@ public class LuceneHighlighter{
 			}
         	
             try {
+            	File outputfile = new File("1.html");
+            	String output = highlight(text, "antioxidant");
+            	FileUtils.write(outputfile, output);
 				System.out.println(highlight(text, "management"));
             	//highlight(text, "management");
 			} catch (Exception e) {
